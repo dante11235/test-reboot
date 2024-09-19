@@ -1,0 +1,21 @@
+---
+- name: Update and reboot Ubuntu machine
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update the package list
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      ansible.builtin.apt:
+        upgrade: dist
+
+    - name: Reboot the machine
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 600
+        pre_reboot_delay: 0
+        post_reboot_delay: 30

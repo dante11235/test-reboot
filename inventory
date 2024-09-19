@@ -1,0 +1,2 @@
+[servers]
+10.66.98.32 ansible_ssh_user=coan
